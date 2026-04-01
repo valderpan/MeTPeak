@@ -4,7 +4,7 @@
   # download the annotation
   if ((!is.na(PARAMETERS$GENOME)) & (!is.na(PARAMETERS$UCSC_TABLE_NAME)) & is.na(PARAMETERS$GENE_ANNO_GTF) & is.na(PARAMETERS$TXDB)) {
     op <- options(warn = (-1))
-    txdb =makeTxDbFromUCSC(genome=PARAMETERS$GENOME,
+    txdb =txdbmaker::makeTxDbFromUCSC(genome=PARAMETERS$GENOME,
                                    tablename=PARAMETERS$UCSC_TABLE_NAME)
     options(op)
   }
@@ -12,7 +12,7 @@
   # use provided annotation data file
   if (!is.na(PARAMETERS$GENE_ANNO_GTF) & is.na(PARAMETERS$TXDB) ) {
     op <- options(warn = (-1))
-    txdb=makeTxDbFromGFF(PARAMETERS$GENE_ANNO_GTF,format="gtf")
+    txdb=txdbmaker::makeTxDbFromGFF(PARAMETERS$GENE_ANNO_GTF,format="gtf")
     options(op)
   }
   
